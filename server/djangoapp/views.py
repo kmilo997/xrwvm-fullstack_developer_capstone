@@ -1,4 +1,5 @@
 # Uncomment the required imports before adding the code
+import requests
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
@@ -79,8 +80,9 @@ def registration(request):
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
-# def get_dealerships(request):
-# ...
+def get_dealerships(rq):
+    response = requests.get("https://juank0397-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchDealers")
+    return JsonResponse(response.json(), safe=False)
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
 # def get_dealer_reviews(request,dealer_id):
